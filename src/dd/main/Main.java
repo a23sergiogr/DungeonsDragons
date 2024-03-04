@@ -27,9 +27,9 @@ public class Main {
         Ejercito ejercito2 = new Ejercito(ejercitoTrolls.length);
         ejercito2.setPersonajes(ejercitoTrolls);
 
-        while (ejercito1.getNVictorias() == ejercito2.getNVictorias()){
-            ejercito1.atacar(ejercito2);
-            ejercito2.atacar(ejercito1);            
+        while (!ejercito1.ejercitoMuerto() && !ejercito2.ejercitoMuerto()){
+            System.out.println(ejercito1.atacar(ejercito2));
+            System.out.println(ejercito2.atacar(ejercito1));
         }
         
         System.out.println("Ejercito 1: " + ejercito1.getNVictorias());

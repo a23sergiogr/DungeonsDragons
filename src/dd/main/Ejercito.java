@@ -41,44 +41,57 @@ public class Ejercito {
         this.nPersonajes = nPersonajes;
     }
 
-
-    /*        int i = 0;
-        int j = 0;
-        while (i < this.nPersonajes && j < ejercito.getNPersonajes()) {
-            int[] valoresAtaque = this.personajes[i].ataca(ejercito.getPersonajes()[j]);
-            for (int valor : valoresAtaque) {
-                System.out.println(this.personajes[i].getNombre() + " ataca a " + ejercito.getPersonajes()[j].getNombre() + " y el valor del ataque es: " + (valor > 0 ? valor : "falla"));
+    public boolean ejercitoMuerto() {
+        for (Personaje personaje : this.personajes) {
+            if (personaje.getSalud() > 0) {
+                return false;
             }
-            System.out.println("comprobar salud actualizada de " + ejercito.getPersonajes()[j].getNombre());
-            if (ejercito.getPersonajes()[j].getSalud() <= 0) {
-                System.out.println("MUERTO " + ejercito.getPersonajes()[j].getNombre());
+        }
+        return true;
+    }
+
+
+    public String atacar(Ejercito ejercito) {
+        StringBuilder resultados = new StringBuilder();
+        int i = 0;
+        Personaje[] ejercitoAtacado = ejercito.getPersonajes();
+        while (i < this.nPersonajes) {
+            int enemigoAtacado = (int) (Math.random() * ejercito.getNPersonajes());
+            while (ejercitoAtacado[enemigoAtacado].getSalud() <= 0) {
+                enemigoAtacado = (int) (Math.random() * ejercito.getNPersonajes());
+            }
+            int[] valoresAtaque = this.personajes[i].ataca(ejercitoAtacado[enemigoAtacado]);
+            for (int valor : valoresAtaque) {
+                if (valor > 0) resultados.append(this.personajes[i].getNombre())
+                        .append(" ataca a ")
+                        .append(ejercitoAtacado[enemigoAtacado].getNombre())
+                        .append(" y el valor del ataque es: ")
+                        .append(valor)
+                        .append("\n");
+                else resultados.append(this.personajes[i].getNombre())
+                        .append(" ataca a ")
+                        .append(ejercitoAtacado[enemigoAtacado].getNombre())
+                        .append(" y el valor del ataque es: ")
+                        .append("falla")
+                        .append("\n");
+            }
+            resultados.append("comprobar salud actualizada de ")
+                    .append(ejercitoAtacado[enemigoAtacado].getNombre())
+                    .append("\n");
+            if (ejercitoAtacado[enemigoAtacado].getSalud() <= 0) {
+                resultados.append("MUERTO ")
+                        .append(ejercitoAtacado[enemigoAtacado].getNombre())
+                        .append("\n");
+                ejercitoAtacado[enemigoAtacado].setSalud(0);
                 ejercito.setNVictorias(ejercito.getNVictorias() + 1);
-                j++;
             } else {
-                System.out.println(ejercito.getPersonajes()[j]);
+                resultados.append(ejercitoAtacado[enemigoAtacado])
+                        .append("\n");
             }
             i++;
-        } */
-    public void atacar(Ejercito ejercito) {
-        int i = 0;
-        while (i < this.nPersonajes) {
-            int j = 0;
-            while (j < ejercito.getNPersonajes()) {
-                int[] valoresAtaque = this.personajes[i].ataca(ejercito.getPersonajes()[j]);
-                for (int valor : valoresAtaque) {
-                    System.out.println(this.personajes[i].getNombre() + " ataca a " + ejercito.getPersonajes()[j].getNombre() + " y el valor del ataque es: " + (valor > 0 ? valor : "falla"));
-                }
-                System.out.println("comprobar salud actualizada de " + ejercito.getPersonajes()[j].getNombre());
-                if (ejercito.getPersonajes()[j].getSalud() <= 0) {
-                    System.out.println("MUERTO " + ejercito.getPersonajes()[j].getNombre());
-                    ejercito.setNVictorias(ejercito.getNVictorias() + 1);
-                } else {
-                    System.out.println(ejercito.getPersonajes()[j]);
-                }
-                j++;
-            }
-            i++;      
         }
+                     
+        return resultados.toString();
     }
     
 }
