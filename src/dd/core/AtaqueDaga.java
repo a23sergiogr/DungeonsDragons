@@ -8,4 +8,8 @@ public class AtaqueDaga implements Ataque{
     public int ejecutarAtaque(){
         return (int) (ATAQUE * (int)(Math.random()*2) * Math.random());
     }    
+
+    public String getNombre() {
+        return "Ataque con Daga";
+    }
 }

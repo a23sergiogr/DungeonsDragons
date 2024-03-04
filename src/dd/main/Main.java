@@ -1,16 +1,40 @@
 package dd.main;
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+import dd.core.AtaqueDaga;
+import dd.core.AtaqueEspada;
+import dd.core.AtaqueArco;  
+import dd.core.Personaje;
+import dd.core.Rey;
+import dd.core.Caballero;
+import dd.core.Troll;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Personaje[] ejercitoHumanos = new Personaje[3];
+        ejercitoHumanos[0] = new Rey("Rey");
+        ejercitoHumanos[0].setAtaque(new AtaqueEspada());
+        ejercitoHumanos[1] = new Caballero("Caballero1");
+        ejercitoHumanos[1].setAtaque(new AtaqueEspada());
+        ejercitoHumanos[2] = new Caballero("Caballero2");
+        ejercitoHumanos[2].setAtaque(new AtaqueArco());
+        Ejercito ejercito1 = new Ejercito(ejercitoHumanos.length);
+        ejercito1.setPersonajes(ejercitoHumanos);
+        
+        Personaje[] ejercitoTrolls = new Personaje[3];
+        ejercitoTrolls[0] = new Troll("Troll1");
+        ejercitoTrolls[1] = new Troll("Troll2");
+        ejercitoTrolls[2] = new Troll("Troll3");
+        Ejercito ejercito2 = new Ejercito(ejercitoTrolls.length);
+        ejercito2.setPersonajes(ejercitoTrolls);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        while (ejercito1.getNVictorias() == ejercito2.getNVictorias()){
+            ejercito1.atacar(ejercito2);
+            ejercito2.atacar(ejercito1);            
         }
+        
+        System.out.println("Ejercito 1: " + ejercito1.getNVictorias());
+        System.out.println("Ejercito 2: " + ejercito2.getNVictorias());
+
     }
+    
 }
