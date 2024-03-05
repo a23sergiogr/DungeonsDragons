@@ -1,7 +1,7 @@
 package dd.core;
 
 public class Troll extends Personaje{
-    private static final int VIDA = 1000;
+    private static final int VIDA = 100;
     private static final int nAtaques = 1;
 
     public Troll(String nombre) {

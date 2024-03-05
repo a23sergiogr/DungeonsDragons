@@ -46,6 +46,6 @@ public class Personaje {
     }
 
     public String toString() {
-        return "[" + nombre + ": " + salud + "]";
+        return "[" + nombre + ", " + salud + "]";
     }
 }
