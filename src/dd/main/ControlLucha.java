@@ -33,14 +33,12 @@ public class ControlLucha {
     }
 
     private void crearEjercitoTrol() {
-        int numeroTrolls = (int)(Math.random()*10+1);
+        int numeroTrolls = (int)(Math.random()*7+3);
         System.out.println("Numero de trolls: " + numeroTrolls);
         Personaje[] ejercitoTrolls = new Personaje[numeroTrolls];
         ejercitoTrolls[0] = new Troll("Troll1");
-        if (ejercitoTrolls.length > 1)
-            ejercitoTrolls[1] = new Troll("Troll2");
-        if (ejercitoTrolls.length > 2)
-            ejercitoTrolls[2] = new Troll("Troll3");
+        ejercitoTrolls[1] = new Troll("Troll2");
+        ejercitoTrolls[2] = new Troll("Troll3");
         if (ejercitoTrolls.length > 3)
             ejercitoTrolls[3] = new Troll("Troll4");
         if (ejercitoTrolls.length > 4)

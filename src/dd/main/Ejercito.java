@@ -117,9 +117,7 @@ public class Ejercito {
                 .append(ejercitoAtacado[1].getSalud())
                 .append(" ")
                 .append(ejercitoAtacado[2].getSalud())
-                .append("\n")
-                .append("Numero de Caidos: ")
-                .append(ejercito.getNCaidos());
+                .append("\n");
         return resultados.toString();
     }
 
